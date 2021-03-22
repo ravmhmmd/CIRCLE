@@ -1,0 +1,13 @@
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.exe
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.deps.json
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.runtimeconfig.json
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.runtimeconfig.dev.json
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.dll
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.pdb
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.csprojAssemblyReference.cache
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.AssemblyInfoInputs.cache
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.AssemblyInfo.cs
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.csproj.CoreCompileInputs.cache
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.dll
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.pdb
+D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.genruntimeconfig.cache
