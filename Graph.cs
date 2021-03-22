@@ -18,7 +18,30 @@ namespace TubesStima2
                 Console.Write(e + " ");
             Console.Write('\n');
         }
+        public void printMutual()
+        {
+            Console.WriteLine("Nama akun : " + name);
+            Console.WriteLine(edges.Count + " mutual friends:");
+            foreach (var e in edges)
+                Console.WriteLine(e);
+            Console.WriteLine('\n');
+
+        }
     }
+    /*class Mutual
+    {
+        public List<string> mutualFriend;
+        public string name;
+        public Mutual(string name)
+        {
+            this.name = name;
+            this.mutualFriend = new List<string>();
+        }
+        public void addMutualFriend(string name, string friend)
+        {
+
+        }
+    }*/
     class Graph
     {
         
@@ -81,7 +104,7 @@ namespace TubesStima2
             foreach (string name in queue)
                 Console.Write(name);
         }
-        public void BFS(Queue<string> queue,Queue<string> visited, int limit)
+        public List<string> BFS(Queue<string> queue,Queue<string> visited, int limit)
         {
             string node;
             int level = 0;
@@ -89,60 +112,113 @@ namespace TubesStima2
             int countElmtinLevel = 0;
             int countForLoop = 0;
             string adjacentnode;
-            while (queue.Count != 0 && level<limit){
-                node = queue.Dequeue();
-                for (int i=0; i<adjacencyList.Find(v => v.name == node).edges.Count; i++)
+            string firstNode = queue.Peek();
+            List<string> result = new List<string>();
+            if (limit == 0)
+            {
+                result.Add(firstNode);
+            }
+            else
+            {
+                while (queue.Count != 0 && level <= limit)
                 {
-                    adjacentnode = adjacencyList.Find(v => v.name == node).edges[i];
-                    if (!visited.Contains(adjacentnode))
-                    {   
-                        queue.Enqueue(adjacentnode);
-                        if (level == limit - 2)
+                    node = queue.Dequeue();
+                    for (int i = 0; i < adjacencyList.Find(v => v.name == node).edges.Count; i++)
+                    {
+                        adjacentnode = adjacencyList.Find(v => v.name == node).edges[i];
+                        if (!visited.Contains(adjacentnode))
                         {
-                            visited.Enqueue(adjacentnode);
-                        }
-                        if (countForLoop == 0)
-                        {
-                            if (level == 0)
+                            queue.Enqueue(adjacentnode);
+                            if (level <= limit - 1)
                             {
-                                countElmtinLevel++;
+                                visited.Enqueue(adjacentnode);
+                                /*if (level == limit - 2)
+                                {
+                                    result.Enqueue(adjacentnode);
+                                }*/
+                            }
+                            if (countForLoop == 0)
+                            {
+                                if (level == 0)
+                                {
+                                    countElmtinLevel++;
+                                }
+                            }
+                            else
+                            {
+                                tempLevel++;
                             }
                         }
-                        else
-                        {
-                            tempLevel++;
-                        }
-                    }   
-                }
-                countForLoop++;
-                if (countForLoop > 0)
-                {
-                    if (countForLoop == countElmtinLevel)
+                    }
+                    countForLoop++;
+                    if (countForLoop > 0)
                     {
-                        level++;
-                        countForLoop = 0;
-                        countElmtinLevel = tempLevel;
-                        tempLevel = 0;
+                        if (level == limit - 1)
+                        {
+                            result.Add(queue.Peek());
+                        }
+                        if (countForLoop == countElmtinLevel)
+                        {
+                            level++;
+                            countForLoop = 0;
+                            countElmtinLevel = tempLevel;
+                            tempLevel = 0;
+                        }
                     }
                 }
             }
-            printQueue(visited);
+            return (result);
         }
-        public void BFSSearch(string name)
+        public void recommendation(string name)
         {
-            
+            Queue<string> queue = new Queue<string>();
+            queue.Enqueue(name);
+            Queue<string> visited = new Queue<string>();
+            visited.Enqueue(name);
+            List<string> result = new List<string>();
+
+            result = BFS(queue, visited, 2);
+            List<Vertex> mutual = new List<Vertex>();
+            foreach (string res in result)
+                mutual.Add(new Vertex(res));
+            for(int i=0; i<result.Count; i++)
+            {
+                for (int a = 0; a < adjacencyList.Find(v => v.name == name).edges.Count; a++)
+                {
+                    if (adjacencyList.Find(u => u.name == result[i]).edges.Contains(adjacencyList.Find(v => v.name == name).edges[a]))
+                    {
+                        mutual[i].edges.Add(adjacencyList.Find(v => v.name == name).edges[a]);
+                    }
+                }
+
+            }
+            mutual.Sort((a, b) => b.edges.Count - a.edges.Count);
+            if (mutual.Count != 0)
+            {
+                Console.WriteLine("Daftar rekomendasi teman untuk akun " + name + ":");
+                foreach (var v in mutual)
+                    v.printMutual();
+            }
+
         }
-        public void recommendation(string akun)
+        /*public void addMutualFriend(string name, string friend)
         {
-            
-        }
-        
+            Queue<string> queue = new Queue<string>();
+            queue.Enqueue(name);
+            Queue<string> visited = new Queue<string>();
+            visited.Enqueue(name);
+            Queue<string> result = new Queue<string>();
+            Queue<string> result2 = Queue<string>();
+            result = BFS(queue, visited, 2);
+            result2 = BFS(queue, visited, 1);
+            printQueue(result2);
+        }*/
     }
     class Program
     {
         static void Main(string[] args)
         {
-            Graph mutual = new Graph();
+           /* Graph mutual = new Graph();
             mutual.addVertex("mia");
             mutual.addVertex("mia");
             mutual.addVertex("bambang");
@@ -151,15 +227,16 @@ namespace TubesStima2
             mutual.addVertex("sadjo");
             mutual.addEdge("diap", "sadjo");
             mutual.addEdge("sadjo", "bambang");
-            mutual.printadjacencyList();
+            mutual.printadjacencyList();*/
             Graph recom = new Graph();
             recom.loadFile("friend.txt");
-            recom.printadjacencyList();
-            Queue<string> queue = new Queue<string>();
+            /*Queue<string> queue = new Queue<string>();
             queue.Enqueue("A");
             Queue<string> visited = new Queue<string>();
             visited.Enqueue("A");
-            recom.BFS(queue, visited,2);
+            recom.BFS(queue, visited,0);*/
+            recom.recommendation("A");
+
         }
     }
 
