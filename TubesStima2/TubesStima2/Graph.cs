@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 namespace TubesStima2
 {
-    class Vertex
+    class Node
     {
         public List<string> edges;
         public string name;
-        public Vertex(string name)
+        public Node(string name)
         {
             this.name = name;
             this.edges = new List<string>();
@@ -45,22 +45,22 @@ namespace TubesStima2
     class Graph
     {
         
-        public List<Vertex> adjacencyList;
+        public List<Node> adjacencyList;
 
         public Graph()
         {
-            adjacencyList = new List<Vertex>();
+            adjacencyList = new List<Node>();
         }
         public void addEdge(string node1, string node2)
         {
             adjacencyList.Find(v => v.name == node1).edges.Add(node2);
             adjacencyList.Find(v => v.name == node2).edges.Add(node1);
         }
-        public void addVertex(string newVertex)
+        public void addNode(string newNode)
         {
-            if (adjacencyList.Find(v => v.name == newVertex) == null)
+            if (adjacencyList.Find(v => v.name == newNode) == null)
             {
-                adjacencyList.Add(new Vertex(newVertex));
+                adjacencyList.Add(new Node(newNode));
             }
         }
         public void printadjacencyList()
@@ -94,8 +94,8 @@ namespace TubesStima2
                         parse = true;
                     }
                 }
-                addVertex(node1);
-                addVertex(node2);
+                addNode(node1);
+                addNode(node2);
                 addEdge(node1, node2);
             }
         }
@@ -178,9 +178,9 @@ namespace TubesStima2
             List<string> result = new List<string>();
 
             result = BFS(queue, visited, 2);
-            List<Vertex> mutual = new List<Vertex>();
+            List<Node> mutual = new List<Node>();
             foreach (string res in result)
-                mutual.Add(new Vertex(res));
+                mutual.Add(new Node(res));
             for(int i=0; i<result.Count; i++)
             {
                 for (int a = 0; a < adjacencyList.Find(v => v.name == name).edges.Count; a++)
@@ -219,12 +219,12 @@ namespace TubesStima2
         static void Main(string[] args)
         {
            /* Graph mutual = new Graph();
-            mutual.addVertex("mia");
-            mutual.addVertex("mia");
-            mutual.addVertex("bambang");
+            mutual.addNode("mia");
+            mutual.addNode("mia");
+            mutual.addNode("bambang");
             mutual.addEdge("mia", "bambang");
-            mutual.addVertex("diap");
-            mutual.addVertex("sadjo");
+            mutual.addNode("diap");
+            mutual.addNode("sadjo");
             mutual.addEdge("diap", "sadjo");
             mutual.addEdge("sadjo", "bambang");
             mutual.printadjacencyList();*/

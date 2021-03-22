@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Kuliah\\smt4\\Stima\\tubes2\\TubesStima2\\TubesStima2\\TubesStima2.csproj": {}
+    "C:\\Users\\minam\\OneDrive\\Desktop\\INFORMATIKA\\SMT4\\Stima\\Tubes\\Tubes2_13519004\\TubesStima2\\TubesStima2\\TubesStima2.csproj": {}
   },
   "projects": {
-    "D:\\Kuliah\\smt4\\Stima\\tubes2\\TubesStima2\\TubesStima2\\TubesStima2.csproj": {
+    "C:\\Users\\minam\\OneDrive\\Desktop\\INFORMATIKA\\SMT4\\Stima\\Tubes\\Tubes2_13519004\\TubesStima2\\TubesStima2\\TubesStima2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Kuliah\\smt4\\Stima\\tubes2\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
+        "projectUniqueName": "C:\\Users\\minam\\OneDrive\\Desktop\\INFORMATIKA\\SMT4\\Stima\\Tubes\\Tubes2_13519004\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
         "projectName": "TubesStima2",
-        "projectPath": "D:\\Kuliah\\smt4\\Stima\\tubes2\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\Kuliah\\smt4\\Stima\\tubes2\\TubesStima2\\TubesStima2\\obj\\",
+        "projectPath": "C:\\Users\\minam\\OneDrive\\Desktop\\INFORMATIKA\\SMT4\\Stima\\Tubes\\Tubes2_13519004\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
+        "packagesPath": "C:\\Users\\minam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\minam\\OneDrive\\Desktop\\INFORMATIKA\\SMT4\\Stima\\Tubes\\Tubes2_13519004\\TubesStima2\\TubesStima2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\minam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
