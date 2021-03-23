@@ -28,20 +28,73 @@ namespace TubesStima2
 
         }
     }
-    /*class Mutual
+    class ListNode
     {
-        public List<string> mutualFriend;
-        public string name;
-        public Mutual(string name)
+        public List<Node> edgeList;
+        public ListNode()
         {
-            this.name = name;
-            this.mutualFriend = new List<string>();
+            edgeList = new List<Node>();
         }
-        public void addMutualFriend(string name, string friend)
+        public void addEdgeList(string node1, string node2)
         {
-
+            edgeList.Find(v => v.name == node1).edges.Add(node2);
         }
-    }*/
+        public void addNodeList(string newNode)
+        {
+            if (edgeList.Find(v => v.name == newNode) == null)
+            {
+                edgeList.Add(new Node(newNode));
+            }
+        }
+        public void printListNode()
+        {
+            if (edgeList.Count != 0)
+            {
+                foreach (var v in edgeList)
+                    v.printEdge();
+            }
+        }
+        public void findPath(List<string> path, string name, string other)
+        {
+            string tempPath = other;
+            for (int i=edgeList.Count-1; i>=0; i--)
+            {
+                if (edgeList[i].edges.Contains(tempPath))
+                {
+                    path.Add(tempPath);
+                    tempPath = edgeList[i].name;
+                }
+            }
+            path.Add(name);
+        }
+        public void printPath(List<string> path)
+        {
+            Console.Write("(");
+            int i;
+            for(i=path.Count-1; i>0; i--)
+            {
+                Console.Write(path[i]+"->");
+            }
+            Console.Write(path[i] + ", "+ (path.Count - 2).ToString());
+            if (path.Count - 2 == 1)
+            {
+                Console.Write("st");
+            }
+            else if (path.Count - 2 == 2)
+            {
+                Console.Write("nd");
+            }
+            else if (path.Count - 2 == 3)
+            {
+                Console.Write("rd");
+            }
+            else
+            {
+                Console.Write("th");
+            }
+            Console.Write(" Degree)\n");
+        }
+    }
     class Graph
     {
         
@@ -131,7 +184,6 @@ namespace TubesStima2
                             adjacentnode = adjacencyList.Find(v => v.name == node).edges[i];
                             if (!visited.Contains(adjacentnode))
                             {
-                                //Console.WriteLine(adjacentnode);
                                 queue.Enqueue(adjacentnode);
                                 visited.Enqueue(adjacentnode);
                                 tempLevel++;
@@ -141,58 +193,53 @@ namespace TubesStima2
                                     {
                                         result.Add(adjacentnode);
                                     }
-                                    //Console.WriteLine(queue.Peek());
                                 }
-                                //Console.WriteLine(tempLevel);
-                                /*if (countForLoop == 0 && level == 0)
-                                {
-                                    countElmtinLevel++;
-                                }
-                                /*if (countForLoop == 0)
-                                {
-                                    if (level == 0)
-                                    {
-                                        countElmtinLevel++;
-                                        
-                                    }
-                                }
-                                else
-                                {
-                                    tempLevel++;
-                                    Console.WriteLine(tempLevel);
-                                }*/
                             }
                             
                         }
                         countForLoop++;
                     }
-                    //Console.WriteLine(countElmtinLevel);
-                    //Console.WriteLine(level);
-                    //Console.WriteLine(countForLoop);
-                    //Console.WriteLine(tempLevel);
                     if (countForLoop > 0)
                     {
-                        /*if (level == limit - 1)
-                        {
-                            if (queue.Count != 0)
-                            {
-                                result.Add(queue.Peek());
-                            }
-                            //Console.WriteLine(queue.Peek());
-                        }*/
                         if (countForLoop == countElmtinLevel)
                         {
                             level++;
                             countForLoop = 0;
                             countElmtinLevel = tempLevel;
-                            //Console.WriteLine(countElmtinLevel);
                             tempLevel = 0;
                         }
                     }
                 }
             }
-            printQueue(visited);
             return (result);
+        }
+        public void BFSSearch(Queue<string> queue, Queue<string> visited, string other, ListNode result)
+        {
+            string node;
+            bool found = false;
+            string adjacentnode;
+            while (queue.Count != 0 && !found)
+            {
+                node = queue.Dequeue();
+                result.addNodeList(node);
+                for (int i = 0; i < adjacencyList.Find(v => v.name == node).edges.Count; i++)
+                {
+                    adjacentnode = adjacencyList.Find(v => v.name == node).edges[i];
+                    if (!visited.Contains(adjacentnode))
+                    {
+                        queue.Enqueue(adjacentnode);
+                        visited.Enqueue(adjacentnode);
+                        result.addEdgeList(node, adjacentnode);
+                        if (adjacentnode == other)
+                        {
+                            found = true;
+                            
+                            break;
+                        }
+                    }
+                }
+                
+            }
         }
         public void recommendation(string name)
         {
@@ -217,50 +264,52 @@ namespace TubesStima2
                 }
 
             }
-            mutual.Sort((a, b) => b.edges.Count - a.edges.Count);
             if (mutual.Count != 0)
             {
+                mutual.Sort((a, b) => b.edges.Count - a.edges.Count);
                 Console.WriteLine("Daftar rekomendasi teman untuk akun " + name + ":");
                 foreach (var v in mutual)
                     v.printMutual();
             }
 
         }
-        /*public void addMutualFriend(string name, string friend)
+        public void exploreFriend(string name, string other)
         {
             Queue<string> queue = new Queue<string>();
             queue.Enqueue(name);
             Queue<string> visited = new Queue<string>();
             visited.Enqueue(name);
-            Queue<string> result = new Queue<string>();
-            Queue<string> result2 = Queue<string>();
-            result = BFS(queue, visited, 2);
-            result2 = BFS(queue, visited, 1);
-            printQueue(result2);
-        }*/
+            ListNode result = new ListNode();
+            List<string> path = new List<string>();
+            BFSSearch(queue, visited, other, result);
+            if (result.edgeList[(result.edgeList.Count -1)].edges.Contains(other))
+            {
+                result.findPath(path, name, other);
+                Console.WriteLine("Nama Akun: " + name + " dan " + other);
+                result.printPath(path);
+            }
+            else
+            {
+                Console.WriteLine("Tidak ada jalur koneksi yang tersedia");
+                Console.WriteLine("Anda harus memulai koneksi baru itu sendiri.");
+            }
+            
+        }
     }
     class Program
     {
         static void Main(string[] args)
         {
-           /* Graph mutual = new Graph();
-            mutual.addNode("mia");
-            mutual.addNode("mia");
-            mutual.addNode("bambang");
-            mutual.addEdge("mia", "bambang");
-            mutual.addNode("diap");
-            mutual.addNode("sadjo");
-            mutual.addEdge("diap", "sadjo");
-            mutual.addEdge("sadjo", "bambang");
-            mutual.printadjacencyList();*/
             Graph recom = new Graph();
             recom.loadFile("friend.txt");
-            /*Queue<string> queue = new Queue<string>();
+            Queue<string> queue = new Queue<string>();
             queue.Enqueue("A");
             Queue<string> visited = new Queue<string>();
             visited.Enqueue("A");
-            recom.BFS(queue, visited,0);*/
-            recom.recommendation("C");
+            //recom.BFSSearch(queue, visited, "H");
+            //recom.recommendation("A");
+            recom.exploreFriend("A", "H");
+
 
         }
     }
