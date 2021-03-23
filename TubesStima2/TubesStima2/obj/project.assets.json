@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\minam\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\minam\\OneDrive\\Desktop\\INFORMATIKA\\SMT4\\Stima\\Tubes\\Tubes2_13519004\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
+      "projectUniqueName": "D:\\Kuliah\\smt4\\Stima\\tubes2\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
       "projectName": "TubesStima2",
-      "projectPath": "C:\\Users\\minam\\OneDrive\\Desktop\\INFORMATIKA\\SMT4\\Stima\\Tubes\\Tubes2_13519004\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
-      "packagesPath": "C:\\Users\\minam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\minam\\OneDrive\\Desktop\\INFORMATIKA\\SMT4\\Stima\\Tubes\\Tubes2_13519004\\TubesStima2\\TubesStima2\\obj\\",
+      "projectPath": "D:\\Kuliah\\smt4\\Stima\\tubes2\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\Kuliah\\smt4\\Stima\\tubes2\\TubesStima2\\TubesStima2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\minam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -109,7 +109,7 @@ namespace TubesStima2
             string node;
             int level = 0;
             int tempLevel = 0;
-            int countElmtinLevel = 0;
+            int countElmtinLevel = 1;
             int countForLoop = 0;
             string adjacentnode;
             string firstNode = queue.Peek();
@@ -123,50 +123,75 @@ namespace TubesStima2
                 while (queue.Count != 0 && level <= limit)
                 {
                     node = queue.Dequeue();
-                    for (int i = 0; i < adjacencyList.Find(v => v.name == node).edges.Count; i++)
+                    //Console.WriteLine(node);
+                    if (level <= limit - 1)
                     {
-                        adjacentnode = adjacencyList.Find(v => v.name == node).edges[i];
-                        if (!visited.Contains(adjacentnode))
+                        for (int i = 0; i < adjacencyList.Find(v => v.name == node).edges.Count; i++)
                         {
-                            queue.Enqueue(adjacentnode);
-                            if (level <= limit - 1)
+                            adjacentnode = adjacencyList.Find(v => v.name == node).edges[i];
+                            if (!visited.Contains(adjacentnode))
                             {
+                                //Console.WriteLine(adjacentnode);
+                                queue.Enqueue(adjacentnode);
                                 visited.Enqueue(adjacentnode);
-                                /*if (level == limit - 2)
+                                tempLevel++;
+                                if (level == limit - 1)
                                 {
-                                    result.Enqueue(adjacentnode);
-                                }*/
-                            }
-                            if (countForLoop == 0)
-                            {
-                                if (level == 0)
+                                    if (queue.Count != 0)
+                                    {
+                                        result.Add(adjacentnode);
+                                    }
+                                    //Console.WriteLine(queue.Peek());
+                                }
+                                //Console.WriteLine(tempLevel);
+                                /*if (countForLoop == 0 && level == 0)
                                 {
                                     countElmtinLevel++;
                                 }
+                                /*if (countForLoop == 0)
+                                {
+                                    if (level == 0)
+                                    {
+                                        countElmtinLevel++;
+                                        
+                                    }
+                                }
+                                else
+                                {
+                                    tempLevel++;
+                                    Console.WriteLine(tempLevel);
+                                }*/
                             }
-                            else
-                            {
-                                tempLevel++;
-                            }
+                            
                         }
+                        countForLoop++;
                     }
-                    countForLoop++;
+                    //Console.WriteLine(countElmtinLevel);
+                    //Console.WriteLine(level);
+                    //Console.WriteLine(countForLoop);
+                    //Console.WriteLine(tempLevel);
                     if (countForLoop > 0)
                     {
-                        if (level == limit - 1)
+                        /*if (level == limit - 1)
                         {
-                            result.Add(queue.Peek());
-                        }
+                            if (queue.Count != 0)
+                            {
+                                result.Add(queue.Peek());
+                            }
+                            //Console.WriteLine(queue.Peek());
+                        }*/
                         if (countForLoop == countElmtinLevel)
                         {
                             level++;
                             countForLoop = 0;
                             countElmtinLevel = tempLevel;
+                            //Console.WriteLine(countElmtinLevel);
                             tempLevel = 0;
                         }
                     }
                 }
             }
+            printQueue(visited);
             return (result);
         }
         public void recommendation(string name)
@@ -235,7 +260,7 @@ namespace TubesStima2
             Queue<string> visited = new Queue<string>();
             visited.Enqueue("A");
             recom.BFS(queue, visited,0);*/
-            recom.recommendation("A");
+            recom.recommendation("C");
 
         }
     }
