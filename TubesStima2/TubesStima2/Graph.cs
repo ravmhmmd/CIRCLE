@@ -245,7 +245,52 @@ namespace TubesStima2
                 }
                 
             }
+            
+
         }
+
+        public void DFSSearch(string startVertex, string other, ListNode result)
+        {
+            Node start = adjacencyList.Find(v => v.name == startVertex);
+            Queue<string> visited = new Queue<string>();
+            Stack<Node> stack = new Stack<Node>();
+            stack.Push(start);
+
+            string node;
+            bool found = false;
+            string adjacentnode;
+            while (stack.Count != 0 && !found)
+            {
+                var current = stack.Pop();
+                result.addNodeList(current.name);
+                for(int i = 0; i < adjacencyList.Find(v => v.name == current.name).edges.Count; i++)
+                {
+                    adjacentnode = adjacencyList.Find(v => v.name == current.name).edges[i];
+                    if (!visited.Contains(adjacentnode))
+                    {
+                        stack.Push(adjacencyList.Find(v => v.name == adjacentnode));
+                        visited.Enqueue(adjacentnode);
+
+                        result.addEdgeList(current.name, adjacentnode);
+                        if (adjacentnode == other)
+                        {
+                            found = true;
+
+                            break;
+                        }
+                    }
+                }
+               
+
+            }
+            Console.WriteLine(startVertex);
+            Console.WriteLine(other);
+            
+
+
+        }
+
+
 
         public List<string> DFS(string startVertex)
         {
@@ -296,6 +341,7 @@ namespace TubesStima2
             int method = Convert.ToInt32(Console.ReadLine());
             if (method == 1)
                 result = BFS(queue, visited, 2);
+                
             if (method == 2)
                 result = DFS(name);
                 
@@ -334,15 +380,32 @@ namespace TubesStima2
             visited.Enqueue(name);
             ListNode result = new ListNode();
             List<string> path = new List<string>();
-            BFSSearch(queue, visited, other, result);
+
+            Console.WriteLine("Enter Methods:");
+            Console.WriteLine("1. BFS");
+            Console.WriteLine("2. DFS");
+            Console.WriteLine("================");
+            int method = Convert.ToInt32(Console.ReadLine());
+            if (method == 1)
+                BFSSearch(queue, visited, other, result);
+                result.printListNode();
+            if (method == 2)
+                DFSSearch(name, other, result);
+                result.printListNode();
+
+
+
+            Console.WriteLine("Nama Akun: " + name + " dan " + other);
+
             if (result.edgeList[(result.edgeList.Count -1)].edges.Contains(other))
             {
                 result.findPath(path, name, other);
-                Console.WriteLine("Nama Akun: " + name  + " dan " + other);
+                
                 result.printPath(path);
             }
             else
             {
+
                 Console.WriteLine("Tidak ada jalur koneksi yang tersedia");
                 Console.WriteLine("Anda harus memulai koneksi baru itu sendiri.");
             }
@@ -360,8 +423,8 @@ namespace TubesStima2
             Queue<string> visited = new Queue<string>();
             visited.Enqueue("A");
             //recom.BFSSearch(queue, visited, "H");
-            recom.recommendation("A");
-            //recom.exploreFriend("A", "H");
+            //recom.recommendation("A");
+            recom.exploreFriend("A", "G");
 
 
         }
