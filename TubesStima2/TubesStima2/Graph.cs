@@ -23,6 +23,7 @@ namespace TubesStima2
             Console.WriteLine("Nama akun : " + name);
             Console.WriteLine(edges.Count + " mutual friends:");
             foreach (var e in edges)
+
                 Console.WriteLine(e);
             Console.WriteLine('\n');
 
@@ -249,7 +250,7 @@ namespace TubesStima2
             if (start == null) return null;
 
             List<string> result = new List<string>();
-            HashSet<string> visited = new HashSet<string>();
+            Queue<string> visited = new Queue<string>();
             Stack<Node> stack = new Stack<Node>();
             stack.Push(start);
 
@@ -258,18 +259,22 @@ namespace TubesStima2
                 var current = stack.Pop();
                 if (visited.Contains(current.name)) continue;
                 result.Add(current.name);
-                visited.Add(current.name);
+                visited.Enqueue(current.name);
 
                 foreach (var neighbor in current.edges)
                 {
-                    if (!visited.Contains(neighbor))
+                    
+                    if (!visited.Contains(neighbor) )
                     {
                         stack.Push(adjacencyList.Find(v => v.name == neighbor));
                     }
                 }
             }
+            result.RemoveAt(0);
             return result;
         }
+
+      
 
 
 
@@ -281,8 +286,22 @@ namespace TubesStima2
             visited.Enqueue(name);
             List<string> result = new List<string>();
 
-            result = BFS(queue, visited, 2);
-            //result = DFS(name);
+            Console.WriteLine("Enter Methods:");
+            Console.WriteLine("1. BFS");
+            Console.WriteLine("2. DFS");
+            Console.WriteLine("================");
+            int method = Convert.ToInt32(Console.ReadLine());
+            if (method == 1)
+                result = BFS(queue, visited, 2);
+            if (method == 2)
+                result = DFS(name);
+                
+                
+            foreach (object o in visited)
+            {
+                Console.WriteLine(o);
+            }
+            
             List<Node> mutual = new List<Node>();
             foreach (string res in result)
                 mutual.Add(new Node(res));
@@ -306,6 +325,7 @@ namespace TubesStima2
             }
 
         }
+        
         public void exploreFriend(string name, string other)
         {
             Queue<string> queue = new Queue<string>();
@@ -318,7 +338,7 @@ namespace TubesStima2
             if (result.edgeList[(result.edgeList.Count -1)].edges.Contains(other))
             {
                 result.findPath(path, name, other);
-                Console.WriteLine("Nama Akun: " + name + " dan " + other);
+                Console.WriteLine("Nama Akun: " + name  + " dan " + other);
                 result.printPath(path);
             }
             else
