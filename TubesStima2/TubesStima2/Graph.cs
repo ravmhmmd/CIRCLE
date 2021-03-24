@@ -334,6 +334,8 @@ namespace TubesStima2
             visited.Enqueue(name);
             List<string> result = new List<string>();
 
+            Console.WriteLine("================");
+            Console.WriteLine("Friend Recommendation");
             Console.WriteLine("Enter Methods:");
             Console.WriteLine("1. BFS");
             Console.WriteLine("2. DFS");
@@ -381,6 +383,8 @@ namespace TubesStima2
             ListNode result = new ListNode();
             List<string> path = new List<string>();
 
+            Console.WriteLine("================");
+            Console.WriteLine("Explore Friends");
             Console.WriteLine("Enter Methods:");
             Console.WriteLine("1. BFS");
             Console.WriteLine("2. DFS");
@@ -423,8 +427,8 @@ namespace TubesStima2
             Queue<string> visited = new Queue<string>();
             visited.Enqueue("A");
             //recom.BFSSearch(queue, visited, "H");
-            //recom.recommendation("A");
-            recom.exploreFriend("A", "G");
+            recom.recommendation("A");
+            recom.exploreFriend("A", "H");
 
 
         }
