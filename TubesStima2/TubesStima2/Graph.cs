@@ -241,6 +241,35 @@ namespace TubesStima2
                 
             }
         }
+
+        public List<string> DFS(Queue<string> queue, Queue<string> visited, int limi)
+        {
+            Node start = adjacencyList.Find(v => v.name == queue.Peek());
+            if (start == null) return null;
+
+            List<string> result = new List<string>();
+            
+            Stack<Node> stack = new Stack<Node>();
+            stack.Push(start);
+
+            while (stack.Count > 0)
+            {
+                var current = stack.Pop();
+                if (visited.Contains(current.name)) continue;
+                result.Add(current.name);
+                visited.Enqueue(current.name);
+
+                foreach (var neighbor in current.edges)
+                {
+                    if (!visited.Contains(neighbor))
+                    {
+                        stack.Push(adjacencyList.Find(v => v.name == neighbor));
+                    }
+                }
+            }
+            return result;
+        }
+
         public void recommendation(string name)
         {
             Queue<string> queue = new Queue<string>();
