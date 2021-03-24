@@ -229,6 +229,7 @@ namespace TubesStima2
                     {
                         queue.Enqueue(adjacentnode);
                         visited.Enqueue(adjacentnode);
+
                         result.addEdgeList(node, adjacentnode);
                         if (adjacentnode == other)
                         {
@@ -242,13 +243,13 @@ namespace TubesStima2
             }
         }
 
-        public List<string> DFS(Queue<string> queue, Queue<string> visited, int limi)
+        public List<string> DFS(string startVertex)
         {
-            Node start = adjacencyList.Find(v => v.name == queue.Peek());
+            Node start = adjacencyList.Find(v => v.name == startVertex);
             if (start == null) return null;
 
             List<string> result = new List<string>();
-            
+            HashSet<string> visited = new HashSet<string>();
             Stack<Node> stack = new Stack<Node>();
             stack.Push(start);
 
@@ -257,7 +258,7 @@ namespace TubesStima2
                 var current = stack.Pop();
                 if (visited.Contains(current.name)) continue;
                 result.Add(current.name);
-                visited.Enqueue(current.name);
+                visited.Add(current.name);
 
                 foreach (var neighbor in current.edges)
                 {
@@ -270,6 +271,8 @@ namespace TubesStima2
             return result;
         }
 
+
+
         public void recommendation(string name)
         {
             Queue<string> queue = new Queue<string>();
@@ -279,6 +282,7 @@ namespace TubesStima2
             List<string> result = new List<string>();
 
             result = BFS(queue, visited, 2);
+            //result = DFS(name);
             List<Node> mutual = new List<Node>();
             foreach (string res in result)
                 mutual.Add(new Node(res));
@@ -336,8 +340,8 @@ namespace TubesStima2
             Queue<string> visited = new Queue<string>();
             visited.Enqueue("A");
             //recom.BFSSearch(queue, visited, "H");
-            //recom.recommendation("A");
-            recom.exploreFriend("A", "H");
+            recom.recommendation("A");
+            //recom.exploreFriend("A", "H");
 
 
         }
