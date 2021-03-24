@@ -20,13 +20,16 @@ namespace TubesStima2
         }
         public void printMutual()
         {
-            Console.WriteLine("Nama akun : " + name);
-            Console.WriteLine(edges.Count + " mutual friends:");
-            foreach (var e in edges)
+            if (edges.Count != 0)
+            {
+                Console.WriteLine("Nama akun : " + name);
+
+                Console.WriteLine(edges.Count + " mutual friends:");
+                foreach (var e in edges)
 
                 Console.WriteLine(e);
-            Console.WriteLine('\n');
-
+                Console.WriteLine('\n');
+            }
         }
     }
     class ListNode
@@ -297,10 +300,7 @@ namespace TubesStima2
                 result = DFS(name);
                 
                 
-            foreach (object o in visited)
-            {
-                Console.WriteLine(o);
-            }
+            
             
             List<Node> mutual = new List<Node>();
             foreach (string res in result)
