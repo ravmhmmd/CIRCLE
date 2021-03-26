@@ -18,7 +18,7 @@ namespace GuiTubesStima2
         {
             InitializeComponent();
         }
-        public void LoadFileVis(string filename, Microsoft.Msagl.Drawing.Graph graph)
+        public void LoadFileVis(string filename, Microsoft.Msagl.Drawing.Graph graph, List<string> path)
         {
             string[] lines = System.IO.File.ReadAllLines(filename);
             for (int idx = 1; idx < lines.Length; idx++)
@@ -41,12 +41,24 @@ namespace GuiTubesStima2
                         parse = true;
                     }
                 }
-                graph.AddEdge(node1, node2);
-
-            }
-            for(int i=0; i<graph.NodeCount; i++)
-            {
-                graph.
+                int x;
+                for (x=0; x<path.Count-1; x++)
+                {
+                    if((node1==path[x] && node2 == path[(x + 1)])|| (node2 == path[x] && node1 == path[(x + 1)]))
+                    {
+                        break;
+                    }
+                }
+                if (x == path.Count-1)
+                {
+                    graph.AddEdge(node1, node2);
+                }
+                else
+                {
+                    graph.AddEdge(node1, node2).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
+                }
+                graph.FindNode(node1).Attr.Shape = Microsoft.Msagl.Drawing.Shape.Circle;
+                graph.FindNode(node2).Attr.Shape = Microsoft.Msagl.Drawing.Shape.Circle;
             }
         }
         public void buttonBrowse_Click(object sender, EventArgs e)
@@ -92,7 +104,7 @@ namespace GuiTubesStima2
             bool dfsChosen;
             Graph filenyeNiBos = new Graph();
             filenyeNiBos.LoadFile(iniNamaFile);
-
+            
             if (dfsButton.Checked)
             {
                 dfsChosen = true;
@@ -158,6 +170,14 @@ namespace GuiTubesStima2
                 richTextBox1.Text += "Tidak ada jalur koneksi yang tersedia";
                 richTextBox1.Text += "Anda harus memulai koneksi baru itu sendiri.";
             }
+            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+            Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+            LoadFileVis(iniNamaFile, graph, path);
+            viewer.Graph = graph;
+            visualisasiGraph.SuspendLayout();
+            viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            visualisasiGraph.Controls.Add(viewer);
+            viewer.ResumeLayout();
 
             //richTextBox1.Text = "ini " + akunMain + " dan " + akunSecondary;
         }

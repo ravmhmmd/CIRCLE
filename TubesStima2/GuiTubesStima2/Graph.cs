@@ -141,7 +141,6 @@ namespace GuiTubesStima2
                         if (adjacentnode == other)
                         {
                             found = true;
-
                             break;
                         }
                     }

@@ -51,7 +51,6 @@ namespace GuiTubesStima2
             this.label2 = new System.Windows.Forms.Label();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.drawingPanel1 = new Microsoft.Msagl.GraphViewerGdi.DrawingPanel();
             this.visualisasiGraph = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -98,7 +97,6 @@ namespace GuiTubesStima2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel2.Controls.Add(this.visualisasiGraph);
-            this.panel2.Controls.Add(this.drawingPanel1);
             this.panel2.Controls.Add(this.richTextBox1);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.pictureBox1);
@@ -303,13 +301,6 @@ namespace GuiTubesStima2
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // drawingPanel1
-            // 
-            this.drawingPanel1.Location = new System.Drawing.Point(31, 142);
-            this.drawingPanel1.Name = "drawingPanel1";
-            this.drawingPanel1.Size = new System.Drawing.Size(75, 23);
-            this.drawingPanel1.TabIndex = 9;
-            this.drawingPanel1.Text = "drawingPanel1";
             // 
             // visualisasiGraph
             // 
@@ -368,7 +359,6 @@ namespace GuiTubesStima2
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel visualisasiGraph;
-        private DrawingPanel drawingPanel1;
     }
 }
 
