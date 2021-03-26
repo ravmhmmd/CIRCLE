@@ -30,10 +30,15 @@ Buat daftar simpul yang berdekatan di simpul itu. Tambahkan yang tidak ada dalam
 Ulangi terus langkah 2 dan 3 hingga stack kosong
 
 **Cara menggunakan program**
+
 - run GuiTubesStima2.exe pada folder bin/Debug/
 
 **Author**
+
 -Muhammad Bintang Pananjung (13519004)
+
 -Muhammad Rayhan Ravianda (13519201)
+
 -Ramadhana Bhanuharya Wishnumurti (13519203)
+
 
