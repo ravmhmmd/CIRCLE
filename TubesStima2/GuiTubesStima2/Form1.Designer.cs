@@ -30,8 +30,10 @@ namespace GuiTubesStima2
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.account1 = new System.Windows.Forms.TextBox();
             this.Submit = new System.Windows.Forms.Button();
@@ -60,18 +62,30 @@ namespace GuiTubesStima2
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gold;
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.logo);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1989, 125);
             this.panel1.TabIndex = 0;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("KG HAPPY Solid", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.Navy;
+            this.label6.Location = new System.Drawing.Point(1173, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(282, 37);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "connecting people";
+            // 
             // logo
             // 
             this.logo.AutoSize = true;
             this.logo.Font = new System.Drawing.Font("KG HAPPY Solid", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.logo.ForeColor = System.Drawing.Color.Navy;
-            this.logo.Location = new System.Drawing.Point(507, 20);
+            this.logo.Location = new System.Drawing.Point(26, 20);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(282, 96);
             this.logo.TabIndex = 1;
@@ -80,14 +94,24 @@ namespace GuiTubesStima2
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel2.Controls.Add(this.richTextBox1);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(0, 118);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1942, 945);
+            this.panel2.Size = new System.Drawing.Size(1942, 937);
             this.panel2.TabIndex = 1;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(661, 178);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(803, 467);
+            this.richTextBox1.TabIndex = 8;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // panel5
             // 
@@ -97,61 +121,64 @@ namespace GuiTubesStima2
             this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.account2);
-            this.panel5.Location = new System.Drawing.Point(71, 339);
+            this.panel5.Location = new System.Drawing.Point(808, 40);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1154, 102);
+            this.panel5.Size = new System.Drawing.Size(656, 111);
             this.panel5.TabIndex = 7;
             // 
             // account1
             // 
-            this.account1.Location = new System.Drawing.Point(212, 36);
+            this.account1.Location = new System.Drawing.Point(254, 23);
             this.account1.Name = "account1";
             this.account1.Size = new System.Drawing.Size(151, 27);
             this.account1.TabIndex = 5;
+            this.account1.TextChanged += new System.EventHandler(this.account1_TextChanged);
             // 
             // Submit
             // 
-            this.Submit.Location = new System.Drawing.Point(948, 36);
+            this.Submit.Location = new System.Drawing.Point(472, 25);
             this.Submit.Name = "Submit";
-            this.Submit.Size = new System.Drawing.Size(152, 28);
+            this.Submit.Size = new System.Drawing.Size(152, 66);
             this.Submit.TabIndex = 4;
             this.Submit.Text = "Submit";
             this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Quicksand Bold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.Navy;
-            this.label4.Location = new System.Drawing.Point(419, 38);
+            this.label4.Location = new System.Drawing.Point(26, 66);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(200, 20);
+            this.label4.Size = new System.Drawing.Size(205, 20);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Explore Friends with :";
+            this.label4.Text = "Explore Friends with  :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Quicksand Bold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Navy;
-            this.label3.Location = new System.Drawing.Point(35, 38);
+            this.label3.Location = new System.Drawing.Point(26, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 20);
+            this.label3.Size = new System.Drawing.Size(207, 20);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Choose Account :";
+            this.label3.Text = "Choose Account          :";
             // 
             // account2
             // 
-            this.account2.Location = new System.Drawing.Point(636, 36);
+            this.account2.Location = new System.Drawing.Point(254, 64);
             this.account2.Name = "account2";
             this.account2.Size = new System.Drawing.Size(151, 27);
             this.account2.TabIndex = 8;
+            this.account2.TextChanged += new System.EventHandler(this.account2_TextChanged);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(634, 40);
+            this.pictureBox1.Location = new System.Drawing.Point(26, 178);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(591, 259);
+            this.pictureBox1.Size = new System.Drawing.Size(609, 467);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
@@ -161,39 +188,41 @@ namespace GuiTubesStima2
             this.panel4.Controls.Add(this.bfsButton);
             this.panel4.Controls.Add(this.dfsButton);
             this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(71, 197);
+            this.panel4.Location = new System.Drawing.Point(441, 40);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(466, 102);
+            this.panel4.Size = new System.Drawing.Size(328, 111);
             this.panel4.TabIndex = 5;
             // 
             // bfsButton
             // 
             this.bfsButton.AutoSize = true;
-            this.bfsButton.Location = new System.Drawing.Point(268, 55);
+            this.bfsButton.Location = new System.Drawing.Point(204, 62);
             this.bfsButton.Name = "bfsButton";
             this.bfsButton.Size = new System.Drawing.Size(54, 24);
             this.bfsButton.TabIndex = 2;
             this.bfsButton.TabStop = true;
             this.bfsButton.Text = "BFS";
             this.bfsButton.UseVisualStyleBackColor = true;
+            this.bfsButton.CheckedChanged += new System.EventHandler(this.bfsButton_CheckedChanged);
             // 
             // dfsButton
             // 
             this.dfsButton.AutoSize = true;
-            this.dfsButton.Location = new System.Drawing.Point(141, 55);
+            this.dfsButton.Location = new System.Drawing.Point(63, 62);
             this.dfsButton.Name = "dfsButton";
             this.dfsButton.Size = new System.Drawing.Size(56, 24);
             this.dfsButton.TabIndex = 1;
             this.dfsButton.TabStop = true;
             this.dfsButton.Text = "DFS";
             this.dfsButton.UseVisualStyleBackColor = true;
+            this.dfsButton.CheckedChanged += new System.EventHandler(this.dfsButton_CheckedChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Quicksand Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.Navy;
-            this.label5.Location = new System.Drawing.Point(181, 17);
+            this.label5.Location = new System.Drawing.Point(110, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 23);
             this.label5.TabIndex = 0;
@@ -206,9 +235,9 @@ namespace GuiTubesStima2
             this.panel3.Controls.Add(this.labelFilename);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.buttonBrowse);
-            this.panel3.Location = new System.Drawing.Point(71, 40);
+            this.panel3.Location = new System.Drawing.Point(26, 40);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(466, 111);
+            this.panel3.Size = new System.Drawing.Size(373, 111);
             this.panel3.TabIndex = 4;
             // 
             // label1
@@ -216,7 +245,7 @@ namespace GuiTubesStima2
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Quicksand Bold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(35, 63);
+            this.label1.Location = new System.Drawing.Point(26, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 20);
             this.label1.TabIndex = 4;
@@ -237,7 +266,7 @@ namespace GuiTubesStima2
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Quicksand Bold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(35, 24);
+            this.label2.Location = new System.Drawing.Point(24, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 20);
             this.label2.TabIndex = 0;
@@ -261,9 +290,10 @@ namespace GuiTubesStima2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1266, 780);
+            this.ClientSize = new System.Drawing.Size(1485, 786);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
@@ -302,7 +332,8 @@ namespace GuiTubesStima2
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox account1;
         private System.Windows.Forms.TextBox account2;
-        private System.Windows.Forms.TextBox acc;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label6;
     }
 }
 

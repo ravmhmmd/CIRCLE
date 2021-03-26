@@ -2,103 +2,6 @@ using System;
 using System.Collections.Generic;
 namespace GuiTubesStima2
 {
-    class Node
-    {
-        public List<string> edges;
-        public string name;
-        public Node(string name)
-        {
-            this.name = name;
-            this.edges = new List<string>();
-        }
-        public void PrintEdge()
-        {
-            Console.Write(name + " | ");
-            foreach (var e in edges)
-                Console.Write(e + " ");
-            Console.Write('\n');
-        }
-        public void PrintMutual()
-        {
-            if (edges.Count != 0)
-            {
-                Console.WriteLine("Nama akun : " + name);
-
-                Console.WriteLine(edges.Count + " mutual friends:");
-                foreach (var e in edges)
-
-                    Console.WriteLine(e);
-                Console.WriteLine('\n');
-            }
-        }
-    }
-    class ListNode
-    {
-        public List<Node> edgeList;
-        public ListNode()
-        {
-            edgeList = new List<Node>();
-        }
-        public void AddEdgeList(string node1, string node2)
-        {
-            edgeList.Find(v => v.name == node1).edges.Add(node2);
-        }
-        public void AddNodeList(string newNode)
-        {
-            if (edgeList.Find(v => v.name == newNode) == null)
-            {
-                edgeList.Add(new Node(newNode));
-            }
-        }
-        public void PrintListNode()
-        {
-            if (edgeList.Count != 0)
-            {
-                foreach (var v in edgeList)
-                    v.PrintEdge();
-            }
-        }
-        public void FindPath(List<string> path, string name, string other)
-        {
-            string tempPath = other;
-            for (int i = edgeList.Count - 1; i >= 0; i--)
-            {
-                if (edgeList[i].edges.Contains(tempPath))
-                {
-                    path.Add(tempPath);
-                    tempPath = edgeList[i].name;
-                }
-            }
-            path.Add(name);
-        }
-        public void PrintPath(List<string> path)
-        {
-            Console.Write("(");
-            int i;
-            for (i = path.Count - 1; i > 0; i--)
-            {
-                Console.Write(path[i] + "->");
-            }
-            Console.Write(path[i] + ", " + (path.Count - 2).ToString());
-            if (path.Count - 2 == 1)
-            {
-                Console.Write("st");
-            }
-            else if (path.Count - 2 == 2)
-            {
-                Console.Write("nd");
-            }
-            else if (path.Count - 2 == 3)
-            {
-                Console.Write("rd");
-            }
-            else
-            {
-                Console.Write("th");
-            }
-            Console.Write(" Degree)\n");
-        }
-    }
     class Graph
     {
 
@@ -255,8 +158,6 @@ namespace GuiTubesStima2
             Queue<string> visited = new Queue<string>();
             Stack<Node> stack = new Stack<Node>();
             stack.Push(start);
-
-            string node;
             bool found = false;
             string adjacentnode;
             while (stack.Count != 0 && !found)
@@ -326,7 +227,7 @@ namespace GuiTubesStima2
 
 
 
-        public void Recommendation(string name)
+        public void Recommendation(string name, bool algoritma)
         {
             Queue<string> queue = new Queue<string>();
             queue.Enqueue(name);
@@ -334,21 +235,16 @@ namespace GuiTubesStima2
             visited.Enqueue(name);
             List<string> result = new List<string>();
 
-            Console.WriteLine("================");
-            Console.WriteLine("Friend Recommendation");
-            Console.WriteLine("Enter Methods:");
-            Console.WriteLine("1. BFS");
-            Console.WriteLine("2. DFS");
-            Console.WriteLine("================");
-            int method = Convert.ToInt32(Console.ReadLine());
-            if (method == 1)
-                result = BFS(queue, visited, 2);
+            // Console.WriteLine("================");
+            // Console.WriteLine("Friend Recommendation");
+            // Console.WriteLine("Enter Methods:");
+            // Console.WriteLine("1. BFS");
+            // Console.WriteLine("2. DFS");
+            // Console.WriteLine("================");
+            // int method = Convert.ToInt32(Console.ReadLine());
 
-            if (method == 2)
-                result = DFS(name);
-
-
-
+            result = BFS(queue, visited, 2);
+            result = DFS(name);
 
             List<Node> mutual = new List<Node>();
             foreach (string res in result)
@@ -371,10 +267,9 @@ namespace GuiTubesStima2
                 foreach (var v in mutual)
                     v.PrintMutual();
             }
-
         }
 
-        public void ExploreFriend(string name, string other)
+        public void ExploreFriend(string name, string other, bool algoritma)
         {
             Queue<string> queue = new Queue<string>();
             queue.Enqueue(name);
@@ -383,21 +278,17 @@ namespace GuiTubesStima2
             ListNode result = new ListNode();
             List<string> path = new List<string>();
 
-            Console.WriteLine("================");
-            Console.WriteLine("Explore Friends");
-            Console.WriteLine("Enter Methods:");
-            Console.WriteLine("1. BFS");
-            Console.WriteLine("2. DFS");
-            Console.WriteLine("================");
+            // Console.WriteLine("================");
+            // Console.WriteLine("Explore Friends");
+            // Console.WriteLine("Enter Methods:");
+            // Console.WriteLine("1. BFS");
+            // Console.WriteLine("2. DFS");
+            // Console.WriteLine("================");
             int method = Convert.ToInt32(Console.ReadLine());
-            if (method == 1)
-                BFSSearch(queue, visited, other, result);
-            result.PrintListNode();
-            if (method == 2)
-                DFSSearch(name, other, result);
-            result.PrintListNode();
 
-
+            BFSSearch(queue, visited, other, result);
+            DFSSearch(name, other, result);
+            result.PrintListNode();
 
             Console.WriteLine("Nama Akun: " + name + " dan " + other);
 
@@ -409,29 +300,9 @@ namespace GuiTubesStima2
             }
             else
             {
-
                 Console.WriteLine("Tidak ada jalur koneksi yang tersedia");
                 Console.WriteLine("Anda harus memulai koneksi baru itu sendiri.");
             }
-
         }
     }
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Graph recom = new Graph();
-            recom.LoadFile("friend.txt");
-            Queue<string> queue = new Queue<string>();
-            queue.Enqueue("A");
-            Queue<string> visited = new Queue<string>();
-            visited.Enqueue("A");
-            //recom.BFSSearch(queue, visited, "H");
-            recom.Recommendation("A");
-            recom.ExploreFriend("A", "H");
-
-
-        }
-    }
-
 }

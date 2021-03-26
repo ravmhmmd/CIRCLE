@@ -11,3 +11,16 @@ D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\Tube
 D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.dll
 D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.pdb
 D:\Kuliah\smt4\Stima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.genruntimeconfig.cache
+D:\githubStima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.exe
+D:\githubStima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.deps.json
+D:\githubStima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.runtimeconfig.json
+D:\githubStima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.runtimeconfig.dev.json
+D:\githubStima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.dll
+D:\githubStima\tubes2\TubesStima2\TubesStima2\bin\Debug\netcoreapp3.1\TubesStima2.pdb
+D:\githubStima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.csprojAssemblyReference.cache
+D:\githubStima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.AssemblyInfoInputs.cache
+D:\githubStima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.AssemblyInfo.cs
+D:\githubStima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.csproj.CoreCompileInputs.cache
+D:\githubStima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.dll
+D:\githubStima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.pdb
+D:\githubStima\tubes2\TubesStima2\TubesStima2\obj\Debug\netcoreapp3.1\TubesStima2.genruntimeconfig.cache
