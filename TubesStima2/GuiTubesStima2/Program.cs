@@ -18,6 +18,8 @@ namespace GuiTubesStima2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            //create a form 
+
             /*Graph recom = new Graph();
             recom.LoadFile("friend.txt");
             Queue<string> queue = new Queue<string>();

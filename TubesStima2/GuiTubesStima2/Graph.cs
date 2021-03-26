@@ -227,7 +227,7 @@ namespace GuiTubesStima2
 
 
 
-        public void Recommendation(string name, bool algoritma)
+        public List<Node> Recommendation(string name, bool algoritma)
         {
             Queue<string> queue = new Queue<string>();
             queue.Enqueue(name);
@@ -242,10 +242,14 @@ namespace GuiTubesStima2
             // Console.WriteLine("2. DFS");
             // Console.WriteLine("================");
             // int method = Convert.ToInt32(Console.ReadLine());
-
-            result = BFS(queue, visited, 2);
-            result = DFS(name);
-
+            if (algoritma)
+            {
+                result = DFS(name);
+            }
+            else
+            {
+                result = BFS(queue, visited, 2);
+            }
             List<Node> mutual = new List<Node>();
             foreach (string res in result)
                 mutual.Add(new Node(res));
@@ -260,16 +264,17 @@ namespace GuiTubesStima2
                 }
 
             }
-            if (mutual.Count != 0)
+            /*if (mutual.Count != 0)
             {
                 mutual.Sort((a, b) => b.edges.Count - a.edges.Count);
                 Console.WriteLine("Daftar rekomendasi teman untuk akun " + name + ":");
                 foreach (var v in mutual)
                     v.PrintMutual();
-            }
+            }*/
+            return mutual;
         }
 
-        public void ExploreFriend(string name, string other, bool algoritma)
+        public List<string> ExploreFriend(string name, string other, bool algoritma)
         {
             Queue<string> queue = new Queue<string>();
             queue.Enqueue(name);
@@ -284,25 +289,25 @@ namespace GuiTubesStima2
             // Console.WriteLine("1. BFS");
             // Console.WriteLine("2. DFS");
             // Console.WriteLine("================");
-            int method = Convert.ToInt32(Console.ReadLine());
-
-            BFSSearch(queue, visited, other, result);
-            DFSSearch(name, other, result);
-            result.PrintListNode();
-
-            Console.WriteLine("Nama Akun: " + name + " dan " + other);
+            if (algoritma)
+            {
+                DFSSearch(name, other, result);
+            }
+            else
+            {
+                BFSSearch(queue, visited, other, result);
+            }
 
             if (result.edgeList[(result.edgeList.Count - 1)].edges.Contains(other))
             {
                 result.FindPath(path, name, other);
-
-                result.PrintPath(path);
             }
-            else
+            /*else
             {
                 Console.WriteLine("Tidak ada jalur koneksi yang tersedia");
                 Console.WriteLine("Anda harus memulai koneksi baru itu sendiri.");
-            }
+            }*/
+            return path;
         }
     }
 }

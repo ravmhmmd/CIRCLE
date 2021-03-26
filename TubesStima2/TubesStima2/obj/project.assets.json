@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\rayha\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\githubStima\\tubes2\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\Tubes2_13519004\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
       "projectName": "TubesStima2",
-      "projectPath": "D:\\githubStima\\tubes2\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
-      "packagesPath": "C:\\Users\\rayha\\.nuget\\packages\\",
-      "outputPath": "D:\\githubStima\\tubes2\\TubesStima2\\TubesStima2\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\Tubes2_13519004\\TubesStima2\\TubesStima2\\TubesStima2.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\Tubes2_13519004\\TubesStima2\\TubesStima2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rayha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

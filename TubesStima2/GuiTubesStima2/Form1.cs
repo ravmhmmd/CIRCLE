@@ -18,7 +18,37 @@ namespace GuiTubesStima2
         {
             InitializeComponent();
         }
+        public void LoadFileVis(string filename, Microsoft.Msagl.Drawing.Graph graph)
+        {
+            string[] lines = System.IO.File.ReadAllLines(filename);
+            for (int idx = 1; idx < lines.Length; idx++)
+            {
+                string node1 = "";
+                string node2 = "";
+                bool parse = false;
+                for (int i = 0; i < lines[idx].Length; i++)
+                {
+                    if (lines[idx][i] != ' ' && !parse)
+                    {
+                        node1 += lines[idx][i];
+                    }
+                    if (lines[idx][i] != ' ' && parse)
+                    {
+                        node2 += lines[idx][i];
+                    }
+                    if (lines[idx][i] == ' ')
+                    {
+                        parse = true;
+                    }
+                }
+                graph.AddEdge(node1, node2);
 
+            }
+            for(int i=0; i<graph.NodeCount; i++)
+            {
+                graph.
+            }
+        }
         public void buttonBrowse_Click(object sender, EventArgs e)
         {
             openFileDialog1.InitialDirectory = "D:";
@@ -54,12 +84,12 @@ namespace GuiTubesStima2
 
         public void Submit_Click(object sender, EventArgs e)
         {
+            richTextBox1.Clear();
             string akunMain = account1.Text;
             string akunSecondary = account2.Text;
             //string hasilRecommendation;
             //string hasilExploreFriends;
             bool dfsChosen;
-
             Graph filenyeNiBos = new Graph();
             filenyeNiBos.LoadFile(iniNamaFile);
 
@@ -73,8 +103,8 @@ namespace GuiTubesStima2
             {
                 dfsChosen = false;
             }
-
-            List <Node> mutual = filenyeNiBos.Recommendation(akunMain, dfsChosen);
+            List<Node> mutual = new List<Node>();
+            mutual = filenyeNiBos.Recommendation(akunMain, dfsChosen);
             if (mutual.Count != 0)
             {
                 mutual.Sort((a, b) => b.edges.Count - a.edges.Count);
@@ -82,10 +112,10 @@ namespace GuiTubesStima2
                 foreach (var v in mutual)
                     if (v.edges.Count != 0)
                     {
-                        richTextBox1.Text += "Nama akun : " + akunMain + "\n";
+                        richTextBox1.Text += "Nama akun : " + v.name + "\n";
                         richTextBox1.Text += v.edges.Count + " mutual friends:\n";
                         foreach (var ed in v.edges)
-                            richTextBox1.Text += ed;
+                            richTextBox1.Text += ed +"\n";
                         richTextBox1.Text += "\n";
                     }
             }
@@ -93,7 +123,8 @@ namespace GuiTubesStima2
             {
                 richTextBox1.Text = "Invalid Graph\n";
             }
-            List<string> path = filenyeNiBos.ExploreFriend(akunMain, akunSecondary, dfsChosen);
+            List<string> path = new List<string>();
+            path = filenyeNiBos.ExploreFriend(akunMain, akunSecondary, dfsChosen);
             richTextBox1.Text += "Nama Akun: " + akunMain + " dan " + akunSecondary +"\n";
             if (path.Count != 0)
             {
@@ -135,41 +166,5 @@ namespace GuiTubesStima2
         {
             
         }
-        /*private void Form1_Load(object sender, EventArgs e)
-{
-   richTextBox1.Font = new Font("Consolas", 18f, FontStyle.Bold);
-   richTextBox1.BackColor = Color.AliceBlue;
-   string[] words =
-   {
-       "Dot",
-       "Net",
-       "Perls",
-       "is",
-       "a",
-       "nice",
-       "website."
-   };
-   Color[] colors =
-   {
-       Color.Aqua,
-       Color.CadetBlue,
-       Color.Cornsilk,
-       Color.Gold,
-       Color.HotPink,
-       Color.Lavender,
-       Color.Moccasin
-   };
-   for (int i = 0; i < words.Length; i++)
-   {
-       string word = words[i];
-       Color color = colors[i];
-       {
-           richTextBox1.SelectionBackColor = color;
-           richTextBox1.AppendText(word);
-           richTextBox1.SelectionBackColor = Color.AliceBlue;
-           richTextBox1.AppendText(" ");
-       }
-   }
-}*/
     }
 }

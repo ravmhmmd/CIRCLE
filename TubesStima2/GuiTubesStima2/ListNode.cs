@@ -22,14 +22,14 @@ namespace GuiTubesStima2
                 edgeList.Add(new Node(newNode));
             }
         }
-        public void PrintListNode()
+        /*public void PrintListNode()
         {
             if (edgeList.Count != 0)
             {
                 foreach (var v in edgeList)
                     v.PrintEdge();
             }
-        }
+        }*/
         public void FindPath(List<string> path, string name, string other)
         {
             string tempPath = other;
@@ -43,7 +43,7 @@ namespace GuiTubesStima2
             }
             path.Add(name);
         }
-        public void PrintPath(List<string> path)
+        /*public void PrintPath(List<string> path)
         {
             Console.Write("(");
             int i;
@@ -69,6 +69,6 @@ namespace GuiTubesStima2
                 Console.Write("th");
             }
             Console.Write(" Degree)\n");
-        }
+        }*/
     }
 }
